@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
+import {Link} from "react-router-dom";
 
 function TableBody({data, columns}) {
   const renderContent = (item, column) => {
@@ -17,6 +18,7 @@ function TableBody({data, columns}) {
     <tbody>
     {
       data.map(item => <tr key={item._id}>
+        <td><Link to={`/users/${item._id}`} className="text-decoration-none">{item.name}</Link></td>
         {Object.keys(columns).map(column => (
           <td key={column}>
           {renderContent(item, column)}
@@ -30,8 +32,8 @@ function TableBody({data, columns}) {
 TableBody.propTypes = {
   data: PropTypes.array.isRequired,
   columns: PropTypes.object.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  onToggleBookMark: PropTypes.func.isRequired
+  onDelete: PropTypes.func,
+  onToggleBookMark: PropTypes.func
 };
 
 export default TableBody;

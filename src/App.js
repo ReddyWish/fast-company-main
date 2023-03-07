@@ -1,28 +1,22 @@
 import React from "react";
+// import UsersList from "./components/usersList";
+import NavBar from "./components/navBar";
+import {Route, Switch} from "react-router-dom";
+import Main from "./components/main";
+import Login from "./components/login";
 import Users from "./components/users";
 
-function App() {
-  // const [users, setUsers] = React.useState();
-  //
-  // React.useEffect(() => {
-  //   api.users.fetchAll().then((data) => setUsers(data));
-  // }, []);
-  // const handleDelete = (userId) =>
-  //   setUsers(users.filter((user) => user._id !== userId));
-  //
-  // const handleToggleBookMark = (id) => {
-  //   setUsers(
-  //     users.map((user) => {
-  //       if (user._id === id) {
-  //         return { ...user, bookmark: !user.bookmark };
-  //       }
-  //       return user;
-  //     })
-  //   );
-  // };
 
+function App() {
   return (
-    <Users/>
+    <>
+      <NavBar/>
+      <Switch>
+        <Route path="/" exact component={Main}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/users/:userId?" component={Users}/>
+      </Switch>
+    </>
   );
 }
 
